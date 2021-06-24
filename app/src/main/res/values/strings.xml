@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Food</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="Developer">Olatubosun Daniel</string>
+
+    <string-array name="state">
+        <item> Oyo </item>
+        <item>Osun</item>
+        <item>Lagos</item>
+    </string-array>
+
+    <string-array name="courier">
+        <item>Courier 1</item>
+        <item>Courier 2</item>
+        <item>Courier 3</item>
+    </string-array>
+
+    <string-array name="dish_name">
+        <item>Rice</item>
+        <item>Beans</item>
+        <item>Spaghetti</item>
+        <item>Salad</item>
+        <item>Hamburgers</item>
+        <item>Yam</item>
+        <item>Amala</item>
+    </string-array>
+
+
+</resources>

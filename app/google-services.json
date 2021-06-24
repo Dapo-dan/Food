@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "733959210552",
+    "project_id": "food-9b1b9",
+    "storage_bucket": "food-9b1b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:733959210552:android:db1734646561789646c8cd",
+        "android_client_info": {
+          "package_name": "com.builddapo.food"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "733959210552-vv5p69jug0jkcemmbun172dcudk9mrq9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwCMAEWGzqzH6MfBbnV8IoVvLDyOEBBVA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "733959210552-vv5p69jug0jkcemmbun172dcudk9mrq9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
