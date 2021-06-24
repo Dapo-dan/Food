@@ -4,6 +4,11 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="Developer">Olatubosun Daniel</string>
+    <string name="slogan">Eat cheap and healthy</string>
+    <string name="signIn_email">sign in with email</string>
+    <string name="signIn_phone">sign in with phone</string>
+    <string name="signUp">sign up</string>
+    <string name="option">OR</string>
 
     <string-array name="state">
         <item> Oyo </item>
