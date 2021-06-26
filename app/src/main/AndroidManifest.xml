@@ -9,7 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Food">
-        <activity android:name=".MainMenu"></activity>
+        <activity android:name=".CouRegistration"></activity>
+        <activity android:name=".CustRegistration" />
+        <activity android:name=".Couloginphone" />
+        <activity android:name=".Couloginemail" />
+        <activity android:name=".Custloginphone" />
+        <activity android:name=".Custloginemail" />
+        <activity android:name=".ChefRegistration" />
+        <activity android:name=".Chefloginphone" />
+        <activity android:name=".Chefloginemail" />
+        <activity android:name=".ChooseOne" />
+        <activity android:name=".MainMenu" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

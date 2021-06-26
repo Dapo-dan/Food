@@ -9,6 +9,10 @@
     <string name="signIn_phone">sign in with phone</string>
     <string name="signUp">sign up</string>
     <string name="option">OR</string>
+    <string name="caption">Find homemade food around you or offer your own!</string>
+    <string name="courier">connect as courier</string>
+    <string name="customer">connect as customer</string>
+    <string name="chef">connect as chef</string>
 
     <string-array name="state">
         <item> Oyo </item>
@@ -31,6 +35,14 @@
         <item>Yam</item>
         <item>Amala</item>
     </string-array>
+    <string name="title_activity_cou_registration">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="email_id">Email Id</string>
+    <string name="lastname">Lastname</string>
+    <string name="firstname">Firstname</string>
 
 
 </resources>

@@ -9,13 +9,12 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/bg_image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
+        android:layout_height="750dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/food" />
+        app:srcCompat="@drawable/bg10" />
 
     <LinearLayout
         android:layout_width="250dp"
