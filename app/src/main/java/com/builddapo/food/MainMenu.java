@@ -53,38 +53,29 @@ public class MainMenu extends AppCompatActivity {
             }
         });
 
-        signinemail= findViewById(R.id.signIn_email);
-        signinphone = findViewById(R.id.signIn_phone);
-        signup=findViewById(R.id.signUp);
+        signinemail=(Button) findViewById(R.id.signIn_email);
+        signinphone =(Button) findViewById(R.id.signIn_phone);
+        signup=(Button) findViewById(R.id.signUp);
 
-        signinemail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent signinemail = new Intent(MainMenu.this, ChooseOne.class);
-                signinemail.putExtra("Home", "Email");
-                startActivity(signinemail);
-                finish();
-            }
+        signinemail.setOnClickListener(v -> {
+            Intent signemail = new Intent(MainMenu.this, ChooseOne.class);
+            signemail.putExtra("Home", "Email");
+            startActivity(signemail);
+            finish();
         });
 
-        signinphone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent signinphone = new Intent(MainMenu.this, ChooseOne.class);
-                signinphone.putExtra("Home", "Email");
-                startActivity(signinphone);
-                finish();
-            }
+        signinphone.setOnClickListener(v -> {
+            Intent signphone = new Intent(MainMenu.this, ChooseOne.class);
+            signphone.putExtra("Home", "Phone");
+            startActivity(signphone);
+            finish();
         });
 
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent signup = new Intent(MainMenu.this, ChooseOne.class);
-                signup.putExtra("Home", "Email");
-                startActivity(signup);
-                finish();
-            }
+        signup.setOnClickListener(v -> {
+            Intent signUp = new Intent(MainMenu.this, ChooseOne.class);
+            signUp.putExtra("Home", "SignUp");
+            startActivity(signUp);
+            finish();
         });
     }
 

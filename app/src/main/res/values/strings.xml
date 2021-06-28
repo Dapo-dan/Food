@@ -16,8 +16,9 @@
 
     <string-array name="state">
         <item> Oyo </item>
-        <item>Osun</item>
-        <item>Lagos</item>
+        <item> Osun </item>
+        <item> Lagos </item>
+        <item> Ibadan </item>
     </string-array>
 
     <string-array name="courier">
@@ -43,6 +44,7 @@
     <string name="email_id">Email Id</string>
     <string name="lastname">Lastname</string>
     <string name="firstname">Firstname</string>
+    <string name="home_street_no">Home/Street no</string>
 
 
 </resources>
