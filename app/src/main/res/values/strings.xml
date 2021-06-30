@@ -45,6 +45,7 @@
     <string name="lastname">Lastname</string>
     <string name="firstname">Firstname</string>
     <string name="home_street_no">Home/Street no</string>
+    <string name="mobile_no">Mobile No</string>
 
 
 </resources>
