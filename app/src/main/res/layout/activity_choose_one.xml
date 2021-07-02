@@ -4,21 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/img4"
     tools:context=".ChooseOne">
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/back8"
-        android:layout_width="match_parent"
-        android:layout_height="750dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bg8"/>
 
     <LinearLayout
         android:layout_width="250dp"
-        android:layout_height="300dp"
+        android:layout_height="320dp"
         android:orientation="vertical"
         android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"

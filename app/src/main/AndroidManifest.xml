@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Food"
         tools:replace="android:theme">
-        <activity android:name=".CouRegistration"/>
+        <activity android:name=".ChefVerifyPhone"></activity>
+        <activity android:name=".CouRegistration" />
         <activity android:name=".CustRegistration" />
         <activity android:name=".Couloginphone" />
         <activity android:name=".Couloginemail" />
@@ -25,6 +26,7 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
