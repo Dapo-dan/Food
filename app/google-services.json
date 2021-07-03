@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "733959210552",
+    "firebase_url": "https://food-9b1b9-default-rtdb.firebaseio.com",
     "project_id": "food-9b1b9",
     "storage_bucket": "food-9b1b9.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "733959210552-0h5mjtbj04ehjfuv0utkq28vie32hjc7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.builddapo.food",
+            "certificate_hash": "f4d4287e181614536177923b6acfc4c5a2f4703f"
+          }
+        },
         {
           "client_id": "733959210552-vv5p69jug0jkcemmbun172dcudk9mrq9.apps.googleusercontent.com",
           "client_type": 3
