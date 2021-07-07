@@ -1,17 +1,15 @@
 package com.builddapo.food;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -53,9 +51,9 @@ public class MainMenu extends AppCompatActivity {
             }
         });
 
-        signinemail=(Button) findViewById(R.id.signIn_email);
-        signinphone =(Button) findViewById(R.id.signIn_phone);
-        signup=(Button) findViewById(R.id.signUp);
+        signinemail= findViewById(R.id.signIn_email);
+        signinphone = findViewById(R.id.signIn_phone);
+        signup= findViewById(R.id.signUp);
 
         signinemail.setOnClickListener(v -> {
             Intent signemail = new Intent(MainMenu.this, ChooseOne.class);

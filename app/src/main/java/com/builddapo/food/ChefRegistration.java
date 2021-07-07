@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class ChefRegistration extends AppCompatActivity {
 
@@ -117,15 +118,15 @@ public class ChefRegistration extends AppCompatActivity {
 
         signup.setOnClickListener(v -> {
 
-            fname = Fname.getEditText().getText().toString().trim();
-            lname = Lname.getEditText().getText().toString().trim();
-            emailid = Email.getEditText().getText().toString().trim();
-            mobile = mobileno.getEditText().getText().toString().trim();
-            password = Pass.getEditText().getText().toString().trim();
-            confpassword = cpass.getEditText().getText().toString().trim();
-            Area = area.getEditText().getText().toString().trim();
-            house = houseno.getEditText().getText().toString().trim();
-            Pincode = pincode.getEditText().getText().toString().trim();
+            fname = Objects.requireNonNull(Fname.getEditText()).getText().toString().trim();
+            lname = Objects.requireNonNull(Lname.getEditText()).getText().toString().trim();
+            emailid = Objects.requireNonNull(Email.getEditText()).getText().toString().trim();
+            mobile = Objects.requireNonNull(mobileno.getEditText()).getText().toString().trim();
+            password = Objects.requireNonNull(Pass.getEditText()).getText().toString().trim();
+            confpassword = Objects.requireNonNull(cpass.getEditText()).getText().toString().trim();
+            Area = Objects.requireNonNull(area.getEditText()).getText().toString().trim();
+            house = Objects.requireNonNull(houseno.getEditText()).getText().toString().trim();
+            Pincode = Objects.requireNonNull(pincode.getEditText()).getText().toString().trim();
 
             if (isValid()){
                 final ProgressDialog mDialog = new ProgressDialog(ChefRegistration.this);
@@ -134,81 +135,73 @@ public class ChefRegistration extends AppCompatActivity {
                 mDialog.setMessage("Registration in progress please wait......");
                 mDialog.show();
 
-                FAuth.createUserWithEmailAndPassword(emailid,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+                FAuth.createUserWithEmailAndPassword(emailid,password).addOnCompleteListener(task -> {
 
-                        if (task.isSuccessful()){
-                            String useridd = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                            databaseReference = FirebaseDatabase.getInstance().getReference("User").child(useridd);
-                            final HashMap<String , String> hashMap = new HashMap<>();
-                            hashMap.put("Role",role);
-                            databaseReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()){
+                        String useridd = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+                        databaseReference = FirebaseDatabase.getInstance().getReference("User").child(useridd);
+                        final HashMap<String , String> hashMap = new HashMap<>();
+                        hashMap.put("Role",role);
+                        databaseReference.setValue(hashMap).addOnCompleteListener(task1 -> {
 
-                                    HashMap<String , String> hashMap1 = new HashMap<>();
-                                    hashMap1.put("Mobile No",mobile);
-                                    hashMap1.put("First Name",fname);
-                                    hashMap1.put("Last Name",lname);
-                                    hashMap1.put("EmailId",emailid);
-                                    hashMap1.put("City",cityy);
-                                    hashMap1.put("Area",Area);
-                                    hashMap1.put("Password",password);
-                                    hashMap1.put("Pincode",Pincode);
-                                    hashMap1.put("State",statee);
-                                    hashMap1.put("Confirm Password",confpassword);
-                                    hashMap1.put("House",house);
+                            HashMap<String , String> hashMap1 = new HashMap<>();
+                            hashMap1.put("Mobile No",mobile);
+                            hashMap1.put("First Name",fname);
+                            hashMap1.put("Last Name",lname);
+                            hashMap1.put("EmailId",emailid);
+                            hashMap1.put("City",cityy);
+                            hashMap1.put("Area",Area);
+                            hashMap1.put("Password",password);
+                            hashMap1.put("Pincode",Pincode);
+                            hashMap1.put("State",statee);
+                            hashMap1.put("Confirm Password",confpassword);
+                            hashMap1.put("House",house);
 
-                                    firebaseDatabase.getInstance().getReference("Chef")
-                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                            .setValue(hashMap1).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            mDialog.dismiss();
+                            firebaseDatabase.getInstance().getReference("Chef")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .setValue(hashMap1).addOnCompleteListener(task112 -> {
+                                        mDialog.dismiss();
 
-                                            FAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
+                                        FAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(task11 -> {
 
-                                                    if(task.isSuccessful()){
-                                                        AlertDialog.Builder builder = new AlertDialog.Builder(ChefRegistration.this);
-                                                        builder.setMessage("You Have Registered! Make Sure To Verify Your Email");
-                                                        builder.setCancelable(false);
-                                                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                                            @Override
-                                                            public void onClick(DialogInterface dialog, int which) {
+                                            if(task11.isSuccessful()){
+                                                AlertDialog.Builder builder = new AlertDialog.Builder(ChefRegistration.this);
+                                                builder.setMessage("You Have Registered! Make Sure To Verify Your Email");
+                                                builder.setCancelable(false);
+                                                builder.setPositiveButton("Ok", (dialog, which) -> {
 
-                                                                dialog.dismiss();
+                                                    dialog.dismiss();
 
-                                                                String phonenumber = Cpp.getSelectedCountryCodeWithPlus() + mobile;
-                                                                Intent b = new Intent(ChefRegistration.this, ChefVerifyPhone.class);
-                                                                b.putExtra("phonenumber", phonenumber);
-                                                                startActivity(b);
+                                                    String phonenumber = Cpp.getSelectedCountryCodeWithPlus() + mobile;
+                                                    Intent b = new Intent(ChefRegistration.this, ChefVerifyPhone.class);
+                                                    b.putExtra("phonenumber", phonenumber);
+                                                    startActivity(b);
 
-                                                            }
-                                                        });
-                                                        AlertDialog Alert = builder.create();
-                                                        Alert.show();
-                                                    }else{
-                                                        mDialog.dismiss();
-                                                        ReusableCodeForAll.ShowAlert(ChefRegistration.this,"Error",task.getException().getMessage());
-                                                    }
-                                                }
-                                            });
+                                                });
+                                                AlertDialog Alert = builder.create();
+                                                Alert.show();
+                                            }else{
+                                                mDialog.dismiss();
+                                                ReusableCodeForAll.ShowAlert(ChefRegistration.this,"Error", task11.getException().getMessage());
+                                            }
+                                        });
 
-                                        }
                                     });
 
-                                }
-                            });
-                        }
+                        });
                     }
                 });
             }
 //
         });
-
+        Email.setOnClickListener(v -> {
+            startActivity(new Intent(ChefRegistration.this, Chefloginemail.class));
+            finish();
+        });
+        Phone.setOnClickListener(v -> {
+            startActivity(new Intent(ChefRegistration.this, Chefloginphone.class));
+            finish();
+        });
     }
 
     String emailpattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";

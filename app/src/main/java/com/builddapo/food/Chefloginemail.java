@@ -14,7 +14,6 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
-import java.util.concurrent.ExecutionException;
 
 public class Chefloginemail extends AppCompatActivity {
 
@@ -98,7 +97,7 @@ public class Chefloginemail extends AppCompatActivity {
         pass.setErrorEnabled(false);
         pass.setError("");
 
-        boolean isvalid = false, isvalidemail = false, isvalidpassword = false;
+        boolean isvalid, isvalidemail = false, isvalidpassword = false;
         if (TextUtils.isEmpty(emailid)) {
             email.setErrorEnabled(true);
             email.setError("Email is required");

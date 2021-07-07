@@ -152,7 +152,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/PinCode"
+                android:id="@+id/PinCodee"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp">
@@ -195,7 +195,7 @@
                 android:layout_marginTop="5dp" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/Signup"
+                android:id="@+id/Signupbtn"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="20dp"
@@ -254,7 +254,7 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/email"
+                    android:id="@+id/emaill"
                     android:layout_width="95dp"
                     android:layout_height="40dp"
                     android:layout_marginLeft="15dp"
@@ -266,7 +266,7 @@
                     android:textColor="@color/white" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/phone"
+                    android:id="@+id/phonee"
                     android:layout_width="95dp"
                     android:layout_height="40dp"
                     android:layout_marginLeft="30dp"

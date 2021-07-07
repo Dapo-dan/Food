@@ -3,6 +3,7 @@ package com.builddapo.food;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class ChefVerifyPhone extends AppCompatActivity {
@@ -41,10 +43,10 @@ public class ChefVerifyPhone extends AppCompatActivity {
 
         phoneno = getIntent().getStringExtra("phonenumber").trim();
 
-        resend= (Button) findViewById(R.id.resendOTP);
-        verify= (Button) findViewById(R.id.verifyOTP);
-        txt = (TextView) findViewById(R.id.text);
-        entercode = (EditText) findViewById(R.id.code);
+        resend= findViewById(R.id.resendOTP);
+        verify=  findViewById(R.id.verifyOTP);
+        txt =  findViewById(R.id.text);
+        entercode = findViewById(R.id.code);
         FAuth = FirebaseAuth.getInstance();
 
         resend.setVisibility(View.INVISIBLE);
@@ -52,22 +54,19 @@ public class ChefVerifyPhone extends AppCompatActivity {
 
         sendverificationcode(phoneno);
 
-        verify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String code = entercode.getText().toString().trim();
-                resend.setVisibility(View.INVISIBLE);
+        verify.setOnClickListener(v -> {
+            String code = entercode.getText().toString().trim();
+            resend.setVisibility(View.INVISIBLE);
 
-                if (code.isEmpty() && code.length()<6){
-                    entercode.setError("Enter code");
-                    entercode.requestFocus();
-                    return;
-                }
+            if (code.length() == 0){
+                entercode.setError("Enter code");
+                entercode.requestFocus();
             }
         });
 
         new CountDownTimer(60000, 1000){
 
+            @SuppressLint("SetTextI18n")
             @Override
             public void onTick(long millisUntilFinished) {
 
@@ -83,30 +82,27 @@ public class ChefVerifyPhone extends AppCompatActivity {
             }
         }.start();
 
-        resend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        resend.setOnClickListener(v -> {
 
-                resend.setVisibility(View.VISIBLE);
-                resendOTP(phoneno);
+            resend.setVisibility(View.VISIBLE);
+            resendOTP(phoneno);
 
-                new CountDownTimer(60000, 1000){
+            new CountDownTimer(60000, 1000){
 
-                    @Override
-                    public void onTick(long millisUntilFinished) {
+                @Override
+                public void onTick(long millisUntilFinished) {
 
-                        txt.setVisibility(View.VISIBLE);
-                        txt.setText("Resend code within"+millisUntilFinished/1000+"Seconds");
-                    }
+                    txt.setVisibility(View.VISIBLE);
+                    txt.setText("Resend code within"+millisUntilFinished/1000+"Seconds");
+                }
 
-                    @Override
-                    public void onFinish() {
-                        resend.setVisibility(View.VISIBLE);
-                        txt.setVisibility(View.VISIBLE);
+                @Override
+                public void onFinish() {
+                    resend.setVisibility(View.VISIBLE);
+                    txt.setVisibility(View.VISIBLE);
 
-                    }
-                }.start();
-            }
+                }
+            }.start();
         });
     }
 
@@ -166,7 +162,7 @@ public class ChefVerifyPhone extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 } else{
-                    ReusableCodeForAll.ShowAlert(ChefVerifyPhone.this, "Error", task.getException().getMessage());
+                    ReusableCodeForAll.ShowAlert(ChefVerifyPhone.this, "Error", Objects.requireNonNull(task.getException()).getMessage());
                 }
             }
         });
