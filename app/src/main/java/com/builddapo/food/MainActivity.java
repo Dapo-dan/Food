@@ -79,8 +79,18 @@ public class MainActivity extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             String role = snapshot.getValue(String.class);
                             assert role != null;
+
+                            //Auto login: The application logs the user in automatically
                             if(role.equals("Chef")){
                                 startActivity(new Intent(MainActivity.this, ChefFoodPanel_BottomNavigation.class));
+                                finish();
+                            }
+                            if(role.equals("Customer")){
+                                startActivity(new Intent(MainActivity.this, CustFoodPanel_BottomNavigation.class));
+                                finish();
+                            }
+                            if(role.equals("Courier")){
+                                startActivity(new Intent(MainActivity.this, CouFoodPanel_BottomNavigation.class));
                                 finish();
                             }
                         }

@@ -1,20 +1,15 @@
 package com.builddapo.food;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.hbb20.CountryCodePicker;
-
-import java.util.concurrent.ConcurrentHashMap;
 
 public class Chefloginphone extends AppCompatActivity {
 

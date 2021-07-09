@@ -23,9 +23,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
-public class Chefsendotp extends AppCompatActivity {
+public class CustVerifyPhone extends AppCompatActivity {
 
     String verificationId;
     Button resend, verify;
@@ -37,14 +38,14 @@ public class Chefsendotp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chefsendotp);
+        setContentView(R.layout.activity_cust_verify_phone);
 
-        phoneno = getIntent().getStringExtra("Phonenum").trim();
+        phoneno = getIntent().getStringExtra("phonenumber").trim();
 
-        resend=  findViewById(R.id.resendOTP);
-        verify=  findViewById(R.id.verifyOTP);
-        txt =  findViewById(R.id.text);
-        entercode =  findViewById(R.id.code);
+        resend = findViewById(R.id.resendOTPP);
+        verify =  findViewById(R.id.verifyOTPP);
+        txt =  findViewById(R.id.textt);
+        entercode = findViewById(R.id.codee);
         FAuth = FirebaseAuth.getInstance();
 
         resend.setVisibility(View.INVISIBLE);
@@ -61,8 +62,10 @@ public class Chefsendotp extends AppCompatActivity {
                 entercode.requestFocus();
             }
         });
+
         new CountDownTimer(60000, 1000){
 
+            @SuppressLint("SetTextI18n")
             @Override
             public void onTick(long millisUntilFinished) {
 
@@ -80,7 +83,7 @@ public class Chefsendotp extends AppCompatActivity {
 
         resend.setOnClickListener(v -> {
 
-            resend.setVisibility(View.INVISIBLE);
+            resend.setVisibility(View.VISIBLE);
             resendOTP(phoneno);
 
             new CountDownTimer(60000, 1000){
@@ -89,7 +92,7 @@ public class Chefsendotp extends AppCompatActivity {
                 public void onTick(long millisUntilFinished) {
 
                     txt.setVisibility(View.VISIBLE);
-                    txt.setText("Resend code within "+millisUntilFinished/1000+" Seconds");
+                    txt.setText("Resend code within"+millisUntilFinished/1000+"Seconds");
                 }
 
                 @Override
@@ -101,7 +104,6 @@ public class Chefsendotp extends AppCompatActivity {
             }.start();
         });
     }
-
     private void resendOTP(String phonenum) {
 
         sendverificationcode(phonenum);
@@ -131,7 +133,7 @@ public class Chefsendotp extends AppCompatActivity {
 
         @Override
         public void onVerificationFailed(@NonNull FirebaseException e) {
-            Toast.makeText(Chefsendotp.this, e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(CustVerifyPhone.this, e.getMessage(), Toast.LENGTH_LONG).show();
 
         }
 
@@ -143,18 +145,22 @@ public class Chefsendotp extends AppCompatActivity {
 
         }
     };
+
     private void verifyCode(String code) {
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
-        signInWithPhone(credential);
+        linkCredential(credential);
     }
-    private void signInWithPhone(PhoneAuthCredential credential) {
-        FAuth.signInWithCredential(credential).addOnCompleteListener(Chefsendotp.this, task -> {
+
+    private void linkCredential(PhoneAuthCredential credential) {
+        FAuth.getCurrentUser().linkWithCredential(credential).addOnCompleteListener(CustVerifyPhone.this, task -> {
             if(task.isSuccessful()){
-                startActivity(new Intent(Chefsendotp.this, ChefFoodPanel_BottomNavigation.class));
+                Intent intent = new Intent(CustVerifyPhone.this, MainMenu.class);
+                startActivity(intent);
                 finish();
             } else{
-                ReusableCodeForAll.ShowAlert(Chefsendotp.this, "Error", task.getException().getMessage());
+                ReusableCodeForAll.ShowAlert(CustVerifyPhone.this, "Error", Objects.requireNonNull(task.getException()).getMessage());
             }
         });
     }
+
 }

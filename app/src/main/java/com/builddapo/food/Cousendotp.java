@@ -14,18 +14,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskExecutors;
 import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
 
-public class Chefsendotp extends AppCompatActivity {
+public class Cousendotp extends AppCompatActivity {
 
     String verificationId;
     Button resend, verify;
@@ -37,14 +34,14 @@ public class Chefsendotp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chefsendotp);
+        setContentView(R.layout.activity_cousendotp);
 
         phoneno = getIntent().getStringExtra("Phonenum").trim();
 
-        resend=  findViewById(R.id.resendOTP);
-        verify=  findViewById(R.id.verifyOTP);
-        txt =  findViewById(R.id.text);
-        entercode =  findViewById(R.id.code);
+        resend=  findViewById(R.id.DresendOTP);
+        verify=  findViewById(R.id.DverifyOTP);
+        txt =  findViewById(R.id.Dtext);
+        entercode =  findViewById(R.id.Dcode);
         FAuth = FirebaseAuth.getInstance();
 
         resend.setVisibility(View.INVISIBLE);
@@ -63,6 +60,7 @@ public class Chefsendotp extends AppCompatActivity {
         });
         new CountDownTimer(60000, 1000){
 
+            @SuppressLint("SetTextI18n")
             @Override
             public void onTick(long millisUntilFinished) {
 
@@ -77,7 +75,6 @@ public class Chefsendotp extends AppCompatActivity {
 
             }
         }.start();
-
         resend.setOnClickListener(v -> {
 
             resend.setVisibility(View.INVISIBLE);
@@ -131,7 +128,7 @@ public class Chefsendotp extends AppCompatActivity {
 
         @Override
         public void onVerificationFailed(@NonNull FirebaseException e) {
-            Toast.makeText(Chefsendotp.this, e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(Cousendotp.this, e.getMessage(), Toast.LENGTH_LONG).show();
 
         }
 
@@ -143,18 +140,21 @@ public class Chefsendotp extends AppCompatActivity {
 
         }
     };
+
     private void verifyCode(String code) {
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
         signInWithPhone(credential);
     }
+
     private void signInWithPhone(PhoneAuthCredential credential) {
-        FAuth.signInWithCredential(credential).addOnCompleteListener(Chefsendotp.this, task -> {
+        FAuth.signInWithCredential(credential).addOnCompleteListener(Cousendotp.this, task -> {
             if(task.isSuccessful()){
-                startActivity(new Intent(Chefsendotp.this, ChefFoodPanel_BottomNavigation.class));
+                startActivity(new Intent(Cousendotp.this, ChefFoodPanel_BottomNavigation.class));
                 finish();
             } else{
-                ReusableCodeForAll.ShowAlert(Chefsendotp.this, "Error", task.getException().getMessage());
+                ReusableCodeForAll.ShowAlert(Cousendotp.this, "Error", task.getException().getMessage());
             }
         });
     }
+
 }
