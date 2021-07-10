@@ -33,7 +33,7 @@ public class Chefloginemail extends AppCompatActivity {
             pass = findViewById(R.id.Lpassword);
             Signin = findViewById(R.id.button4);
             signup = findViewById(R.id.textView3);
-            Forgotpassword = findViewById(R.id.forgotpass);
+            Forgotpassword = findViewById(R.id.forgot_password);
             Signinphone = findViewById(R.id.btnphone);
 
             Fauth = FirebaseAuth.getInstance();
