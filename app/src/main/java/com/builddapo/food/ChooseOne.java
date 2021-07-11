@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -17,8 +18,9 @@ public class ChooseOne extends AppCompatActivity {
     Button Chef, Customer, Courier;
     Intent intent;
     String type;
-    AppCompatImageView bgimage;
+    ConstraintLayout bgimage;
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +30,24 @@ public class ChooseOne extends AppCompatActivity {
         getSupportActionBar().hide();
 
         setContentView(R.layout.activity_choose_one);
+
+        AnimationDrawable animationDrawable = new AnimationDrawable();
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.bg8),3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.img2),3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.img3),3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.img4),3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.img5),3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.img6),3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.img7),3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.bg10),3000);
+
+        animationDrawable.setOneShot(false);
+        animationDrawable.setEnterFadeDuration(850);
+        animationDrawable.setExitFadeDuration(1600);
+
+        bgimage = findViewById(R.id.back3);
+        bgimage.setBackgroundDrawable(animationDrawable);
+        animationDrawable.start();
 
         intent = getIntent();
         type = intent.getStringExtra("Home").toString().trim();

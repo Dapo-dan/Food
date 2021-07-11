@@ -27,14 +27,15 @@
     </string-array>
 
     <string-array name="dish_name">
-        <item>Rice</item>
-        <item>Beans</item>
-        <item>Spaghetti</item>
-        <item>Salad</item>
-        <item>Hamburgers</item>
-        <item>Yam</item>
-        <item>Amala</item>
+        <item>Rice </item>
+        <item>Beans </item>
+        <item>Spaghetti </item>
+        <item>Salad </item>
+        <item>Hamburgers </item>
+        <item>Yam </item>
+        <item>Amala </item>
     </string-array>
+
     <string name="title_activity_cou_registration">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>

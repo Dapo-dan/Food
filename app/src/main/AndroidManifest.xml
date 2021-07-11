@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Food"
         tools:replace="android:theme">
-        <activity android:name=".Cousendotp"></activity>
+        <activity android:name=".chefFoodPanel.chef_postDish"></activity>
+        <activity android:name=".Cousendotp" />
         <activity android:name=".CouForgotPassword" />
         <activity android:name=".CouFoodPanel_BottomNavigation" />
         <activity android:name=".CouVerifyPhone" />
