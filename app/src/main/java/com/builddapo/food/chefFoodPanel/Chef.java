@@ -18,6 +18,8 @@ public class Chef {
         State = state;
     }
 
+    public Chef(){ }
+
     public String getArea() {
         return Area;
     }
