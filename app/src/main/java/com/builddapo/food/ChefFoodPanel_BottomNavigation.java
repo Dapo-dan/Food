@@ -11,6 +11,8 @@ import com.builddapo.food.chefFoodPanel.ChefHomeFragment;
 import com.builddapo.food.chefFoodPanel.ChefOrderFragment;
 import com.builddapo.food.chefFoodPanel.ChefPendingOrderFragment;
 import com.builddapo.food.chefFoodPanel.ChefProfileFragment;
+import com.builddapo.food.customerFoodPanel.CustomerHomeFragment;
+import com.builddapo.food.customerFoodPanel.CustomerTrackFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ChefFoodPanel_BottomNavigation extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -21,6 +23,20 @@ public class ChefFoodPanel_BottomNavigation extends AppCompatActivity implements
         setContentView(R.layout.activity_chef_food_panel__bottom_navigation);
         BottomNavigationView navigationView = findViewById(R.id.chef_buttom_navigation);
         navigationView.setOnNavigationItemSelectedListener(this);
+        String  name = getIntent().getStringExtra("PAGE");
+        if(name!=null){
+            if(name.equalsIgnoreCase("Orderpage")){
+                loadcheffragment(new ChefPendingOrderFragment());
+            }else if(name.equalsIgnoreCase("Confirmpage")){
+                loadcheffragment(new ChefOrderFragment());
+            }else if(name.equalsIgnoreCase("AcceptOrderpage")){
+                loadcheffragment(new ChefOrderFragment());
+            }else if(name.equalsIgnoreCase("Deliveredpage")){
+                loadcheffragment(new ChefOrderFragment());
+            }
+        } else {
+            loadcheffragment(new ChefHomeFragment());
+        }
     }
 
     @Override

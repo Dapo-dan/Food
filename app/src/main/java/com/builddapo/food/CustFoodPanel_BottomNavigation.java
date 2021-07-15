@@ -3,6 +3,8 @@ package com.builddapo.food;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -23,6 +25,22 @@ public class CustFoodPanel_BottomNavigation extends AppCompatActivity implements
 
         BottomNavigationView navigationView = findViewById(R.id.cust_buttom_navigation);
         navigationView.setOnNavigationItemSelectedListener(this);
+        String  name = getIntent().getStringExtra("PAGE");
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        if(name!=null){
+            if(name.equalsIgnoreCase("Homepage")){
+                loadcustomerfragment(new CustomerHomeFragment());
+            }else if(name.equalsIgnoreCase("Preparingpage")){
+                loadcustomerfragment(new CustomerTrackFragment());
+            }else if(name.equalsIgnoreCase("DeliveryOrderpage")){
+                loadcustomerfragment(new CustomerTrackFragment());
+            }else if(name.equalsIgnoreCase("Thankyoupage")){
+                loadcustomerfragment(new CustomerHomeFragment());
+            }
+        } else {
+            loadcustomerfragment(new CustomerTrackFragment());
+        }
     }
 
     @Override

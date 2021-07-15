@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.builddapo.food.chefFoodPanel.ChefHomeFragment;
+import com.builddapo.food.chefFoodPanel.ChefOrderFragment;
+import com.builddapo.food.chefFoodPanel.ChefPendingOrderFragment;
 import com.builddapo.food.courierFoodPanel.CourierPendingOrderFragment;
 import com.builddapo.food.courierFoodPanel.CourierShippingFragment;
 import com.builddapo.food.customerFoodPanel.CustomerHomeFragment;
@@ -22,6 +25,15 @@ public class CouFoodPanel_BottomNavigation extends AppCompatActivity implements 
 
         BottomNavigationView navigationView = findViewById(R.id.cou_buttom_navigation);
         navigationView.setOnNavigationItemSelectedListener(this);
+
+        String  name = getIntent().getStringExtra("PAGE");
+        if(name!=null){
+            if(name.equalsIgnoreCase("DeliveryOrderpage")){
+                loadcourierfragment(new CourierPendingOrderFragment());
+            }
+        } else {
+            loadcourierfragment(new CourierPendingOrderFragment());
+        }
     }
 
     @Override
