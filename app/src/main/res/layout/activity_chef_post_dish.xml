@@ -55,7 +55,6 @@
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:id="@+id/description"
-        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linear_layout"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,6 +65,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:textColorHint="@color/white"
             android:hint="Description"
             android:inputType="text"/>
 
@@ -75,7 +75,6 @@
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:id="@+id/Quantity"
-        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,6 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Quantity"
+            android:textColorHint="@color/white"
             android:inputType="number"/>
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -95,7 +95,6 @@
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:id="@+id/price"
-        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Quantity"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,6 +105,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:textColorHint="@color/white"
             android:hint="Price"
             android:inputType="number"/>
 

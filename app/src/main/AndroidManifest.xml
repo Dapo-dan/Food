@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Food"
         tools:replace="android:theme">
-        <activity android:name=".chefFoodPanel.chef_postDish"></activity>
+        <activity android:name=".chefFoodPanel.UpdateDelete_Dish"></activity>
+        <activity android:name=".chefFoodPanel.chef_postDish" />
         <activity android:name=".Cousendotp" />
         <activity android:name=".CouForgotPassword" />
         <activity android:name=".CouFoodPanel_BottomNavigation" />
@@ -35,7 +36,7 @@
         <activity android:name=".Chefloginemail" />
         <activity android:name=".ChooseOne" />
         <activity android:name=".MainMenu" />
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"/>
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

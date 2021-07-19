@@ -167,7 +167,7 @@ public class chef_postDish extends AppCompatActivity {
         return isValid;
     }
 
-    private void startCropImageAvtivity (Uri imageuri){
+    private void startCropImageActivity (Uri imageuri){
         CropImage.activity(imageuri)
                 .setGuidelines(CropImageView.Guidelines.ON).setMultiTouchEnabled(true).start(this);
     }
@@ -180,7 +180,7 @@ public class chef_postDish extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (mcropimageuri != null && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            startCropImageAvtivity(mcropimageuri);
+            startCropImageActivity(mcropimageuri);
         } else {
             Toast.makeText(this, "Canceling! Permission not granted", Toast.LENGTH_SHORT).show();
         }
@@ -195,7 +195,7 @@ public class chef_postDish extends AppCompatActivity {
                 mcropimageuri = imageuri;
                 requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},0);
             }else{
-                startCropImageAvtivity(imageuri);
+                startCropImageActivity(imageuri);
             }
         }
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
